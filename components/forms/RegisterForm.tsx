@@ -119,7 +119,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             fieldType={FormFieldType.INPUT}
             control={form.control}
             name="name"
-            placeholder="John Doe"
+            placeholder="Samson Shibungi"
             iconSrc="/assets/icons/user.svg"
             iconAlt="user"
           />
@@ -131,7 +131,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="email"
               label="Email address"
-              placeholder="johndoe@gmail.com"
+              placeholder="samsonshibung@gmail.com"
               iconSrc="/assets/icons/email.svg"
               iconAlt="email"
             />
@@ -141,7 +141,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="phone"
               label="Phone Number"
-              placeholder="(555) 123-4567"
+              placeholder="(+255) 123-456-789"
             />
           </div>
 
@@ -187,7 +187,8 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="address"
               label="Address"
-              placeholder="14 street, New york, NY - 5101"
+              placeholder="14 Nyerere Road, Dar es Salaam, TZ - 12345"
+
             />
 
             <CustomFormField
@@ -214,7 +215,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="emergencyContactNumber"
               label="Emergency contact number"
-              placeholder="(555) 123-4567"
+              placeholder="(+255) 123-456-789"
             />
           </div>
         </section>
@@ -255,7 +256,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="insuranceProvider"
               label="Insurance provider"
-              placeholder="BlueCross BlueShield"
+              placeholder="National Health Insurance Fund (NHIF)"
             />
 
             <CustomFormField
@@ -263,7 +264,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="insurancePolicyNumber"
               label="Insurance policy number"
-              placeholder="ABC123456789"
+              placeholder="NHIF123456789"
             />
           </div>
 
