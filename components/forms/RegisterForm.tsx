@@ -154,30 +154,35 @@ const RegisterForm = ({ user }: { user: User }) => {
               label="Date of birth"
             />
 
-            <CustomFormField
-              fieldType={FormFieldType.SKELETON}
-              control={form.control}
-              name="gender"
-              label="Gender"
-              renderSkeleton={(field) => (
-                <FormControl>
-                  <RadioGroup
-                    className="flex h-11 gap-6 xl:justify-between"
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    {GenderOptions.map((option, i) => (
-                      <div key={option + i} className="radio-group">
-                        <RadioGroupItem value={option} id={option} />
-                        <Label htmlFor={option} className="cursor-pointer">
-                          {option}
-                        </Label>
-                      </div>
-                    ))}
-                  </RadioGroup>
-                </FormControl>
-              )}
-            />
+<CustomFormField
+  fieldType={FormFieldType.SKELETON}
+  control={form.control}
+  name="gender"
+  label="Gender"
+  renderSkeleton={(field) => (
+    <FormControl>
+      <RadioGroup
+        className="flex h-11 gap-6 xl:justify-between"
+        onValueChange={(value) => {
+          // Capitalize the first letter
+          const formattedValue = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+          field.onChange(formattedValue);
+        }}
+        defaultValue={field.value}
+      >
+        {GenderOptions.map((option, i) => (
+          <div key={option + i} className="radio-group">
+            <RadioGroupItem value={option} id={option} />
+            <Label htmlFor={option} className="cursor-pointer">
+              {option}
+            </Label>
+          </div>
+        ))}
+      </RadioGroup>
+    </FormControl>
+  )}
+/>
+
           </div>
 
           {/* Address & Occupation */}
