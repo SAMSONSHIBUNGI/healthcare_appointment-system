@@ -119,7 +119,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             fieldType={FormFieldType.INPUT}
             control={form.control}
             name="name"
-            placeholder="Samson Shibungi"
+            placeholder="John Doe"
             iconSrc="/assets/icons/user.svg"
             iconAlt="user"
           />
@@ -131,7 +131,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="email"
               label="Email address"
-              placeholder="samsonshibung@gmail.com"
+              placeholder="johndoe@gmail.com"
               iconSrc="/assets/icons/email.svg"
               iconAlt="email"
             />
@@ -141,7 +141,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="phone"
               label="Phone Number"
-              placeholder="(+255) 123-456-789"
+              placeholder="(555) 123-4567"
             />
           </div>
 
@@ -154,35 +154,30 @@ const RegisterForm = ({ user }: { user: User }) => {
               label="Date of birth"
             />
 
-<CustomFormField
-  fieldType={FormFieldType.SKELETON}
-  control={form.control}
-  name="gender"
-  label="Gender"
-  renderSkeleton={(field) => (
-    <FormControl>
-      <RadioGroup
-        className="flex h-11 gap-6 xl:justify-between"
-        onValueChange={(value) => {
-          // Capitalize the first letter
-          const formattedValue = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-          field.onChange(formattedValue);
-        }}
-        defaultValue={field.value}
-      >
-        {GenderOptions.map((option, i) => (
-          <div key={option + i} className="radio-group">
-            <RadioGroupItem value={option} id={option} />
-            <Label htmlFor={option} className="cursor-pointer">
-              {option}
-            </Label>
-          </div>
-        ))}
-      </RadioGroup>
-    </FormControl>
-  )}
-/>
-
+            <CustomFormField
+              fieldType={FormFieldType.SKELETON}
+              control={form.control}
+              name="gender"
+              label="Gender"
+              renderSkeleton={(field) => (
+                <FormControl>
+                  <RadioGroup
+                    className="flex h-11 gap-6 xl:justify-between"
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    {GenderOptions.map((option, i) => (
+                      <div key={option + i} className="radio-group">
+                        <RadioGroupItem value={option} id={option} />
+                        <Label htmlFor={option} className="cursor-pointer">
+                          {option}
+                        </Label>
+                      </div>
+                    ))}
+                  </RadioGroup>
+                </FormControl>
+              )}
+            />
           </div>
 
           {/* Address & Occupation */}
@@ -192,8 +187,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="address"
               label="Address"
-              placeholder="14 Nyerere Road, Dar es Salaam, TZ - 12345"
-
+              placeholder="14 street, New york, NY - 5101"
             />
 
             <CustomFormField
@@ -220,7 +214,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="emergencyContactNumber"
               label="Emergency contact number"
-              placeholder="(+255) 123-456-789"
+              placeholder="(555) 123-4567"
             />
           </div>
         </section>
@@ -261,7 +255,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="insuranceProvider"
               label="Insurance provider"
-              placeholder="National Health Insurance Fund (NHIF)"
+              placeholder="BlueCross BlueShield"
             />
 
             <CustomFormField
@@ -269,7 +263,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="insurancePolicyNumber"
               label="Insurance policy number"
-              placeholder="NHIF123456789"
+              placeholder="ABC123456789"
             />
           </div>
 

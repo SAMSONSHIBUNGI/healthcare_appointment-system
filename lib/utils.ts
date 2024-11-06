@@ -5,6 +5,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// utils/errorHandler.ts
+export const getErrorMessage = (error: any) => {
+  return error?.response?.message || error.message || "Unknown error occurred";
+};
+
 export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
 
 export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
