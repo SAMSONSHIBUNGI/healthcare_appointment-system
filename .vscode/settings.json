@@ -14,5 +14,10 @@
   "prettier.arrowParens": "always",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "extensions.ignoreRecommendations": true,
+  "typescript.validate.enable": true,
+  "javascript.validate.enable": true,
+  "editor.formatOnSave": true,
+  "tailwindCSS.experimental.classRegex": ["className\\s*=\\s*\"([^\"]*)\""]
 }
