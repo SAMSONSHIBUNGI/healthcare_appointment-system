@@ -10,7 +10,11 @@ export const getErrorMessage = (error: any) => {
   return error?.response?.message || error.message || "Unknown error occurred";
 };
 
-export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
+export const parseStringify = (value: any) => {
+  if (value === undefined) return null;
+  return JSON.parse(JSON.stringify(value));
+};
+ 
 
 export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
 

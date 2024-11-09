@@ -20,10 +20,10 @@ import {
 } from "@/components/ui/input-otp";
 import { decryptKey, encryptKey } from "@/lib/utils";
 
-export const PasskeyModal = () => {
+  export const PasskeyModal = () => {
   const router = useRouter();
   const path = usePathname();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [passkey, setPasskey] = useState("");
   const [error, setError] = useState("");
 
@@ -45,7 +45,7 @@ export const PasskeyModal = () => {
   }, [encryptedKey]);
 
   const closeModal = () => {
-    setOpen(false);
+    setOpen(true);
     router.push("/");
   };
 
