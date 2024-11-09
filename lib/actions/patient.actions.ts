@@ -96,6 +96,7 @@ export const registerPatient = async ({
 // GET PATIENT
 export const getPatient = async (userId: string) => {
 
+  
 
   try {
     
@@ -105,6 +106,7 @@ export const getPatient = async (userId: string) => {
       PATIENT_COLLECTION_ID!,
       [Query.equal("userId", [userId])]
     );
+
     
     return patients.documents.length > 0 ? parseStringify(patients.documents[0]) : null;
 
