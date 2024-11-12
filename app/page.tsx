@@ -4,14 +4,14 @@ import Link from "next/link";
 import { PatientForm } from "@/components/forms/PatientForm";
 import { PasskeyModal } from "@/components/PasskeyModal";
 
-type Props = { searchParams: Promise<{ [key: string]: string | string[] | undefined }>}
+type Props = { searchParams: { [key: string]: string | string[] | undefined }}
 
-const Home = async ({ searchParams }: Props) => {
-  const searchParam = await searchParams;
+const Home = ({ searchParams }: Props) => {
+  const isAdmin = searchParams?.admin === "true";
 
   return (
     <div className="flex h-screen max-h-screen">
-     {searchParam?.isAdmin && <PasskeyModal />}
+     {isAdmin && <PasskeyModal />}
 
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[496px]">
