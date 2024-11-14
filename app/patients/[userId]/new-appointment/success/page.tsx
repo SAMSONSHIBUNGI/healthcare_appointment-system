@@ -6,11 +6,17 @@ import { Doctors } from "@/constants";
 import { getAppointment } from "@/lib/actions/appointment.actions";
 import { formatDateTime } from "@/lib/utils";
 
+type Props = {
+  params: Promise<{ userId: string }>,
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>}
+
 const RequestSuccess = async ({
   searchParams,
-  params: { userId },
-}: SearchParamProps) => {
-  const appointmentId = (searchParams?.appointmentId as string) || "";
+  params,
+}: Props) => {
+  const sParams = await searchParams;
+  const { userId } = await params;
+  const appointmentId = (sParams?.appointmentId as string) || "";
   const appointment = await getAppointment(appointmentId);
 
   const doctor = Doctors.find(

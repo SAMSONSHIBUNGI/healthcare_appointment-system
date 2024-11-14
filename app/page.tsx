@@ -4,10 +4,11 @@ import Link from "next/link";
 import { PatientForm } from "@/components/forms/PatientForm";
 import { PasskeyModal } from "@/components/PasskeyModal";
 
-type Props = { searchParams: { [key: string]: string | string[] | undefined }}
+type Props = { searchParams: Promise<{ [key: string]: string | string[] | undefined }>}
 
-const Home = ({ searchParams }: Props) => {
-  const isAdmin = searchParams?.admin === "true";
+const Home = async ({ searchParams }: Props) => {
+  const sParams = await searchParams;
+  const isAdmin = sParams?.admin === "true";
 
   return (
     <div className="flex h-screen max-h-screen">
