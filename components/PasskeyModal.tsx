@@ -35,6 +35,11 @@ export const PasskeyModal = () => {
   useEffect(() => {
     const accessKey = encryptedKey && decryptKey(encryptedKey);
 
+useEffect(() => {
+  const accessKey = encryptedKey && decryptKey(encryptedKey);
+}
+)
+
     if (path)
       if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY!.toString()) {
         setOpen(false);
@@ -42,7 +47,7 @@ export const PasskeyModal = () => {
       } else {
         setOpen(true);
       }
-  }, [encryptedKey]);
+  }, [encryptedKey,path,router]);
 
   const closeModal = () => {
     setOpen(true);

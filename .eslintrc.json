@@ -12,8 +12,7 @@
       "error",
       {
         "groups": [
-          "builtin",
-          "external",
+          ["builtin", "external"],
           "internal",
           "parent",
           "sibling",
@@ -23,7 +22,14 @@
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
-        }
+        },
+        "pathGroups": [
+          {
+            "pattern": "lucide-react",
+            "group": "external",
+            "position": "before"
+          }
+        ]
       }
     ]
   }
