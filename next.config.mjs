@@ -9,8 +9,8 @@ export default withSentryConfig(nextConfig, {
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options
 
-  org: "samson",
-  project: "healthcare_appointment system",
+  org: "samson-j9",
+  project: "doctor-healthcare-appointment-system",
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,

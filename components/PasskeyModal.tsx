@@ -27,30 +27,24 @@ export const PasskeyModal = () => {
   const [passkey, setPasskey] = useState("");
   const [error, setError] = useState("");
 
-  const encryptedKey =
-    typeof window !== "undefined"
-      ? window.localStorage.getItem("accessKey")
-      : null;
-
   useEffect(() => {
-    const accessKey = encryptedKey && decryptKey(encryptedKey);
+    const accessKey =
+      typeof window !== "undefined" &&
+      window.localStorage.getItem("accessKey") &&
+      decryptKey(window.localStorage.getItem("accessKey")!);
 
-useEffect(() => {
-  const accessKey = encryptedKey && decryptKey(encryptedKey);
-}
-)
-
-    if (path)
-      if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY!.toString()) {
+    if (path) {
+      if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
         setOpen(false);
         router.push("/admin");
       } else {
         setOpen(true);
       }
-  }, [encryptedKey,path,router]);
+    }
+  }, [path, router]);
 
   const closeModal = () => {
-    setOpen(true);
+    setOpen(false);
     router.push("/");
   };
 
@@ -61,9 +55,7 @@ useEffect(() => {
 
     if (passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
       const encryptedKey = encryptKey(passkey);
-
-      localStorage.setItem("accessKey", encryptedKey);
-
+      window.localStorage.setItem("accessKey", encryptedKey);
       setOpen(false);
     } else {
       setError("Invalid passkey. Please try again.");
@@ -81,7 +73,7 @@ useEffect(() => {
               alt="close"
               width={20}
               height={20}
-              onClick={() => closeModal()}
+              onClick={closeModal}
               className="cursor-pointer"
             />
           </AlertDialogTitle>
@@ -96,15 +88,15 @@ useEffect(() => {
             onChange={(value) => setPasskey(value)}
           >
             <InputOTPGroup className="shad-otp">
-              <InputOTPSlot className="shad-otp-slot" index={0} />
-              <InputOTPSlot className="shad-otp-slot" index={1} />
-              <InputOTPSlot className="shad-otp-slot" index={2} />
-              <InputOTPSlot className="shad-otp-slot" index={3} />
-              <InputOTPSlot className="shad-otp-slot" index={4} />
-              <InputOTPSlot className="shad-otp-slot" index={5} />
+              {[...Array(6)].map((_, index) => (
+                <InputOTPSlot
+                  key={index}
+                  className="shad-otp-slot"
+                  index={index}
+                />
+              ))}
             </InputOTPGroup>
           </InputOTP>
-
           {error && (
             <p className="shad-error text-14-regular mt-4 flex justify-center">
               {error}
@@ -113,7 +105,7 @@ useEffect(() => {
         </div>
         <AlertDialogFooter>
           <AlertDialogAction
-            onClick={(e) => validatePasskey(e)}
+            onClick={validatePasskey}
             className="shad-primary-btn w-full"
           >
             Enter Admin Passkey
